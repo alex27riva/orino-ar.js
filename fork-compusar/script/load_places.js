@@ -3,7 +3,6 @@ class Marker {
         this.name = name;
 		this.latitude = lat;
 		this.longitude = lng;
-        //this.coords = [lat, lng];
     }
 
     toString(){
@@ -24,14 +23,14 @@ function renderPlaces(places) {
         icon.setAttribute("gps-entity-place", "latitude: " + places[i].latitude + "; longitude: " + places[i].longitude + ";");
         icon.setAttribute("width", "5.5");
         icon.setAttribute("height", "8");
-        icon.setAttribute("name", places[i].desc);
+        icon.setAttribute("name", places[i].name);
         icon.setAttribute("src", "assets/images/map-marker.png");
         icon.setAttribute("look-at", "[gps-camera]");
         icon.setAttribute("clickhandler", "");
         icon.setAttribute("id", i + "_icon");
         a_scene.appendChild(icon);
         const text = ar_doc.createElement("a-entity");
-        text.setAttribute("text","value: " + places[i].desc + "; font: https://cdn.aframe.io/fonts/Monoid.fnt; width: 30; align: center; color: #086e25");
+        text.setAttribute("text","value: " + places[i].name + "; font: https://cdn.aframe.io/fonts/Monoid.fnt; width: 30; align: center; color: #086e25");
         text.setAttribute("position"," 0 6 0");
         text.setAttribute("gps-entity-place", "latitude: " + places[i].latitude + "; longitude: " + places[i].longitude + ";");
         text.setAttribute("look-at", "[gps-camera]");
@@ -85,10 +84,8 @@ arview.contentWindow.onload = () => {
 		if (this.readyState == 4 && this.status == 200) {
 			let json = httpReq.response;
 			let places = JSON.parse(json);
-			console.log(places);
-			//let places = obj;
 			for(let i = 0; i < places.length; i++){
-				markers.push(new Marker( places[i].name, places[i].latitude, places[i].longitude));
+				markers.push(new Marker( places[i].desc, places[i].latitude, places[i].longitude));
 			}
 			renderPlaces(markers);
 			loadSearchbarItems(markers);

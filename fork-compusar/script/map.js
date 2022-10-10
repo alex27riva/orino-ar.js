@@ -1,4 +1,4 @@
-var Insubria = [45.88396420045334, 8.718830747234604];
+var Insubria = [45.883964, 8.718830];
 
 var mymap = L.map('mapid').setView(Insubria, 18);
 
