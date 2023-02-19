@@ -1,6 +1,7 @@
 class Marker {
-    constructor(name, lat, lng){
+    constructor(name, desc, lat, lng){
         this.name = name;
+		this.desc = desc;
 		this.latitude = lat;
 		this.longitude = lng;
     }
@@ -83,13 +84,15 @@ arview.contentWindow.onload = () => {
 	httpReq.onreadystatechange = function() {
 		if (this.readyState == 4 && this.status == 200) {
 			let json = httpReq.response;
-			let places = JSON.parse(json);
+			let obj = JSON.parse(json);
+			console.log(obj);
+			let places = obj.location;
 			for(let i = 0; i < places.length; i++){
-				markers.push(new Marker( places[i].desc, places[i].latitude, places[i].longitude));
+				markers.push(new Marker( places[i].name, places[i].description, places[i].latitude, places[i].longitude));
 			}
 			renderPlaces(markers);
-			loadSearchbarItems(markers);
-			window.db = places;
+			//loadSearchbarItems(markers);
+			window.db = obj;
 		}
 	};
 }

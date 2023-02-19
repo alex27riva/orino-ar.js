@@ -4,7 +4,7 @@ AFRAME.registerComponent("clickhandler", {
 				let icon = evt.target || evt.srcElement;
 				let index = parseInt(icon.getAttribute("id"));
 				let panel = parent.document.getElementById("info-panel");
-				let el = parent.db[index];
+				let el = parent.db.location[index];
 				panel.innerHTML = "";
 				let backBtn = parent.document.createElement("button");
 				backBtn.setAttribute("class", "button close");
