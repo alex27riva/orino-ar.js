@@ -28,14 +28,14 @@ function renderPlaces(places) {
 
         // add place icon
         const icon = ar_doc.createElement("a-image");
-        //icon.setAttribute("gps-entity-place", "latitude: " + places[i].latitude + "; longitude: " + places[i].longitude + ";");
+        icon.setAttribute("gps-entity-place", "latitude: " + places[i].latitude + "; longitude: " + places[i].longitude + ";");
         icon.setAttribute("width", "5.5");
         icon.setAttribute("height", "8");
         icon.setAttribute("name", places[i].name);
         icon.setAttribute("src", "img/map-marker-orange.png");
         icon.setAttribute("look-at", "[gps-camera]");
-        //icon.setAttribute("clickhandler", "");
-        //icon.setAttribute("id", i + "_icon");
+        icon.setAttribute("clickhandler", "");
+        icon.setAttribute("id", i + "_icon");
         iconContainer.appendChild(icon);
 
 		const textContainer = ar_doc.createElement("a-entity");
@@ -48,22 +48,11 @@ function renderPlaces(places) {
         const text = ar_doc.createElement("a-entity");
         text.setAttribute("text","value: " + places[i].name + "; font: https://cdn.aframe.io/fonts/Monoid.fnt; width: 30; align: center; color: #dd9e06");
         text.setAttribute("position"," 0 6 0");
-        //text.setAttribute("gps-entity-place", "latitude: " + places[i].latitude + "; longitude: " + places[i].longitude + ";");
+        text.setAttribute("gps-entity-place", "latitude: " + places[i].latitude + "; longitude: " + places[i].longitude + ";");
         text.setAttribute("look-at", "[gps-camera]");
-        //text.setAttribute("clickhandler", "");
-        //text.setAttribute("id", i + "_name");
+        text.setAttribute("clickhandler", "");
+        text.setAttribute("id", i + "_name");
         textContainer.appendChild(text);
-
-		// Add a transparent plane behind the icon and text entities
-		const plane = ar_doc.createElement("a-plane");
-		plane.setAttribute("material", "opacity: 0");
-		plane.setAttribute("width", "10");
-		plane.setAttribute("height", "14");
-		plane.setAttribute("position", "0 3 0");
-		plane.setAttribute("look-at", "[gps-camera]");
-		plane.setAttribute("clickhandler", "");
-		iconContainer.appendChild(plane);
-		textContainer.appendChild(plane.cloneNode(true)); // Add a copy of the plane to the text container
     }
 }
 
