@@ -29,8 +29,8 @@ function renderPlaces(places) {
         // add place icon
         const icon = ar_doc.createElement("a-image");
         icon.setAttribute("gps-entity-place", "latitude: " + places[i].latitude + "; longitude: " + places[i].longitude + ";");
-        icon.setAttribute("width", "5.5");
-        icon.setAttribute("height", "8");
+        icon.setAttribute("width", "11");
+        icon.setAttribute("height", "16");
         icon.setAttribute("name", places[i].name);
         icon.setAttribute("src", "img/map-marker-orange.png");
         icon.setAttribute("look-at", "[gps-camera]");
@@ -38,16 +38,17 @@ function renderPlaces(places) {
         icon.setAttribute("id", i + "_icon");
         iconContainer.appendChild(icon);
 
+		// add text container
 		const textContainer = ar_doc.createElement("a-entity");
 		textContainer.setAttribute("gps-entity-place", "latitude: " + places[i].latitude + "; longitude: " + places[i].longitude + ";");
 		textContainer.setAttribute("clickhandler", "");
 		textContainer.setAttribute("id", i + "_text_container");
 		a_scene.appendChild(textContainer);
 
-
+		// add text
         const text = ar_doc.createElement("a-entity");
-        text.setAttribute("text","value: " + places[i].name + "; font: https://cdn.aframe.io/fonts/Monoid.fnt; width: 30; align: center; color: #dd9e06");
-        text.setAttribute("position"," 0 6 0");
+        text.setAttribute("text","value: " + places[i].name + "; font: https://cdn.aframe.io/fonts/Monoid.fnt; width: 60; align: center; color: #dd9e06");
+        text.setAttribute("position"," 0 12 0");
         text.setAttribute("gps-entity-place", "latitude: " + places[i].latitude + "; longitude: " + places[i].longitude + ";");
         text.setAttribute("look-at", "[gps-camera]");
         text.setAttribute("clickhandler", "");
